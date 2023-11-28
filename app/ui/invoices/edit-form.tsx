@@ -9,7 +9,18 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
+import { updateInvoice } from '@/app/lib/actions';
 
+// todo - add validation
+/* If you'd like to challenge yourself, take the knowledge you've learned in this chapter and add form validation to the edit-form.tsx component.
+
+You'll need to:
+
+Add useFormState to your edit-form.tsx component.
+Edit the updateInvoice action to handle validation errors from Zod.
+Display the errors in your component, and add aria labels to improve accessibility.
+https://nextjs.org/learn/dashboard-app/improving-accessibility - last section
+*/
 export default function EditInvoiceForm({
   invoice,
   customers,
@@ -17,8 +28,11 @@ export default function EditInvoiceForm({
   invoice: InvoiceForm;
   customers: CustomerField[];
 }) {
+  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+
   return (
-    <form>
+    <form action={updateInvoiceWithId}>
+      <input type="hidden" name="id" value={invoice.id} />
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
