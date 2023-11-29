@@ -1,4 +1,9 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+};
 
 // The <Layout /> component receives a children prop.
 // This child can either be a page or another layout.
